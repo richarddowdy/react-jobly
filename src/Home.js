@@ -1,5 +1,4 @@
 import React from 'react';
-import Login from './LogIn'
 
 function Home ({ loggedIn }){
 
@@ -21,5 +20,5 @@ function Home ({ loggedIn }){
 export default Home;
 
 Home.defaultProps = {
-  loggedIn: true
+  loggedIn: false
 }
