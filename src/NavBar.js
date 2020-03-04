@@ -39,7 +39,7 @@ function NavBar({ loggedIn }) {
       <nav className="Navigation navbar navbar-expand-md">
         <NavLink exact to="/" className="navbar-brand">
           Jobly
-      </NavLink>
+        </NavLink>
         <ul className="navbar-nav ml-auto">
           <li className="nav-item mr-4">
             <NavLink exact to="/login" className="nav-link">
@@ -54,5 +54,5 @@ function NavBar({ loggedIn }) {
 export default NavBar;
 
 NavBar.defaultProps = {
-  loggedIn: true
+  loggedIn: false
 }

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 // Define goToHome function in Login.js later
 
-function LoginForm({goToHome}) {
+function LoginForm({login}) {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -18,7 +18,7 @@ function LoginForm({goToHome}) {
 
   const gatherInput = evt => {
     evt.preventDefault();
-    goToHome({formData});
+    login(formData);
   };
 
   return (
