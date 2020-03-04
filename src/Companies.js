@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import JoblyApi from './JoblyApi';
+import CompanyCard from './CompanyCard';
+import CompanySearchForm from './CompanySearchForm';
 
 function Companies() {
   // Get a list of all the companies and then map
-  const [companies, setCompanies] = useState(null);
+  const [companies, setCompanies] = useState([]);
+  
+
   useEffect(() => {
     async function fetchCompanies() {
       const companiesResult = await JoblyApi.getCompanies();
@@ -13,8 +16,20 @@ function Companies() {
     fetchCompanies();
   }, []);
 
+  async function searchCompanies({ searchTerm }) {
+    let data = { search: searchTerm };
+    const companiesResult = await JoblyApi.getCompanies(data);
+    setCompanies(companiesResult);
+  };
 
-return (companies ? <div>{companies.map(company=><div>{company.name}</div>)}</div> : "");
+  return (companies.length ?
+    <div>
+      <CompanySearchForm searchCompanies={searchCompanies} />
+      {companies.map(company =>
+        <CompanyCard company={company} />
+        )}
+    </div>
+    : "");
 };
 
 export default Companies;

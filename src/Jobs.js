@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import JoblyApi from './JoblyApi';
+import JobCard from './JobCard';
 
 function Jobs() {
   // Get a list of all the companies and then map
-  const [jobs, setJobs] = useState(null);
+  const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
     async function fetchJobs() {
@@ -14,14 +15,10 @@ function Jobs() {
   }, []);
 
 
-  return (jobs ? 
+  return (jobs.length ? 
   <div>
-    {jobs.map(job =>
-      <div>
-        <p>{job.title}</p>
-        <p>{job.salary}</p>
-        <p>{job.equity}</p>
-      </div>
+    {jobs.map(job => 
+    <JobCard job={job} />
     )}
   </div>
   : "");
