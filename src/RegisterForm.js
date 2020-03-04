@@ -2,12 +2,13 @@ import React, {useState} from 'react';
 
 // Define goToHome function in Login.js later
 
-function RegisterForm({goToHome}) {
+function RegisterForm({register}) {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
+    photo_url: "",
     email: ""
   });
 
@@ -21,7 +22,7 @@ function RegisterForm({goToHome}) {
 
   const gatherInput = evt => {
     evt.preventDefault();
-    goToHome({formData});
+    register(formData);
   };
 
   return (
@@ -49,23 +50,33 @@ function RegisterForm({goToHome}) {
           />
         </div>
         <div>
-          <label htmlFor="firstName">First Name</label>
+          <label htmlFor="first_name">First Name</label>
           <input
             onChange={handleChange}
             type="text"
-            name="firstName"
+            name="first_name"
             value={formData.firstName}
-            id="firstName"
+            id="first_name"
           />
         </div>
         <div>
-          <label htmlFor="lastName">Last Name</label>
+          <label htmlFor="last_name">Last Name</label>
           <input
             onChange={handleChange}
             type="text"
-            name="lastName"
+            name="last_name"
             value={formData.lastName}
-            id="lastName"
+            id="last_name"
+          />
+        </div>
+        <div>
+          <label htmlFor="photo_url">Photo URL</label>
+          <input
+            onChange={handleChange}
+            type="text"
+            name="photo_url"
+            value={formData.photo_url}
+            id="photo_url"
           />
         </div>
         <div>

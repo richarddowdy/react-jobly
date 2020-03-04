@@ -7,14 +7,14 @@ import Company from './Company';
 import Jobs from './Jobs';
 import Profile from './Profile';
 
-function Routes() {
+function Routes({toggleState, loggedIn}) {
   return (
     <Switch>
-      <Route exact path = "/">
-        <Home/>
+      <Route exact path = "/" >
+        <Home loggedIn={loggedIn}/>
       </Route>
       <Route exact path = "/login">
-        <Login/>
+        <Login toggleState = {toggleState}/>
       </Route>
       <Route exact path = "/companies">
         <Companies/>

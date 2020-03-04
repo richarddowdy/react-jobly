@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-function NavBar({ loggedIn }) {
+function NavBar({ loggedIn, handleLogOut }) {
 
   return (
 
@@ -17,7 +17,7 @@ function NavBar({ loggedIn }) {
               Companies
             </NavLink>
           </li>
-          <li className="nav-item mr-4">
+          <li className="nav-item m-4">
             <NavLink exact to='/jobs' className="nav-link">
               Jobs
             </NavLink>
@@ -28,7 +28,7 @@ function NavBar({ loggedIn }) {
             </NavLink>
           </li>
           <li className="nav-item mr-4">
-            <NavLink exact to='/' className="nav-link">
+            <NavLink onClick = {handleLogOut} exact to='/' className="nav-link">
               Logout
             </NavLink>
           </li>
@@ -53,6 +53,3 @@ function NavBar({ loggedIn }) {
 
 export default NavBar;
 
-NavBar.defaultProps = {
-  loggedIn: false
-}
