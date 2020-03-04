@@ -17,7 +17,7 @@ function Company() {
   }, [handle]);
 
   return (company ?
-    <div>
+    <div >
       <h1>{company.name}</h1>
       <h4>{company.description}</h4>
       <div>
