@@ -14,7 +14,7 @@ function Company() {
     };
 
     fetchCompany(handle);
-  }, []);
+  }, [handle]);
 
   return (company ?
     <div>
@@ -22,7 +22,7 @@ function Company() {
       <h4>{company.description}</h4>
       <div>
         {company.jobs.map(job => (
-          <JobCard job={job} />
+          <JobCard job={job} key={job.title} />
         ))}
       </div>
     </div>

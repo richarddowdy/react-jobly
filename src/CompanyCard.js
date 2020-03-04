@@ -6,7 +6,7 @@ function CompanyCard({ company }) {
     <div>
       <p>{name}</p>
       <p>{description}</p>
-      <img src={logo_url} />
+      <img src={logo_url} alt="Company Logo" />
     </div>
   );
 };

@@ -26,7 +26,7 @@ function Companies() {
     <div>
       <CompanySearchForm searchCompanies={searchCompanies} />
       {companies.map(company =>
-        <CompanyCard company={company} />
+        <CompanyCard company={company} key={company.handle} />
         )}
     </div>
     : "");
