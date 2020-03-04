@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import JoblyApi from './JoblyApi';
-import { Redirect, useHistory} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
-function Login({toggleState}) {
+function Login({handleLogin}) {
   const [loginForm, setLoginForm] = useState(true);
   const history = useHistory();
 
@@ -14,7 +14,7 @@ function Login({toggleState}) {
     const resp = await JoblyApi.login(data);
   
     if (resp.token){
-      toggleState();
+      handleLogin(resp.token);
       history.push("/");
     };
   };
@@ -22,7 +22,7 @@ function Login({toggleState}) {
   async function register(data){
     const resp = await JoblyApi.register(data);
     if (resp.token){
-      toggleState();
+      handleLogin(resp.token);
       history.push("/");
     };
   };

@@ -7,7 +7,6 @@ function Companies() {
   // Get a list of all the companies and then map
   const [companies, setCompanies] = useState([]);
   
-
   useEffect(() => {
     async function fetchCompanies() {
       const companiesResult = await JoblyApi.getCompanies();

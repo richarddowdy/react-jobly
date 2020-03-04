@@ -17,7 +17,7 @@ function NavBar({ loggedIn, handleLogOut }) {
               Companies
             </NavLink>
           </li>
-          <li className="nav-item m-4">
+          <li className="nav-item mr-4">
             <NavLink exact to='/jobs' className="nav-link">
               Jobs
             </NavLink>
@@ -32,7 +32,6 @@ function NavBar({ loggedIn, handleLogOut }) {
               Logout
             </NavLink>
           </li>
-
         </ul>
       </nav>
       :

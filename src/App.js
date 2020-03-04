@@ -3,13 +3,19 @@ import './App.css';
 import NavBar from './NavBar';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './Routes';
+import {useLocalStorage} from './hooks';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const toggleState = () => {setLoggedIn((loggedIn) => true)};
+  const [loggedIn, setLoggedIn] = useLocalStorage("_token")
+
+
+
+  const handleLogin = (token) => {
+    setLoggedIn(token)
+  }
 
   const handleLogOut = () => {
-    setLoggedIn(false);
+    setLoggedIn(null);
     localStorage.removeItem("_token");
   }
 
@@ -17,7 +23,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <NavBar loggedIn = {loggedIn} handleLogOut={handleLogOut}/>
-        <Routes loggedIn = {loggedIn} toggleState = {toggleState}/>
+        <Routes loggedIn = {loggedIn} handleLogin={handleLogin}/>
       </BrowserRouter>
     </div>
   );
