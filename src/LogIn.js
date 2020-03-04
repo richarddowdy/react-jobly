@@ -8,16 +8,15 @@ function Login({toggleState}) {
   const [loginForm, setLoginForm] = useState(true);
   const history = useHistory();
 
+  // Might put login/register in one function
   async function login(data){
-    // let data = {username, password};
+    
     const resp = await JoblyApi.login(data);
   
     if (resp.token){
       toggleState();
       history.push("/");
     };
-    // Redirect, eventually
-    
   };
 
   async function register(data){
@@ -26,7 +25,6 @@ function Login({toggleState}) {
       toggleState();
       history.push("/");
     };
-    
   };
 
   return (

@@ -6,12 +6,10 @@ import Routes from './Routes';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  console.log("Logged in:", loggedIn);
-  const toggleState = () => {setLoggedIn((loggedIn) => !loggedIn)};
+  const toggleState = () => {setLoggedIn((loggedIn) => true)};
 
   const handleLogOut = () => {
     setLoggedIn(false);
-    console.log("Logged out!")
     localStorage.removeItem("_token");
   }
 
