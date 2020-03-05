@@ -15,7 +15,6 @@ function App() {
     setUser(oldUser => newUser);
   };
 
-
   const handleLogin = (token) => {
     setLoggedIn(token)
   }
@@ -27,16 +26,14 @@ function App() {
   }
 
   const handleUpdate = async (data) => {
-    let res = await JoblyApi.update(user.user.username, data);
-    setUser(res);
+    let res = await JoblyApi.update(user.username, data);
+    setUser(res.user);
   };
 
-  
   return (
     <div className="App">
       <BrowserRouter>
         <UserContext.Provider value={{ user, storeUser }}>
-
           <NavBar loggedIn={loggedIn} handleLogOut={handleLogOut} />
           <Routes loggedIn={loggedIn} handleLogin={handleLogin} handleUpdate={handleUpdate} />
         </UserContext.Provider>

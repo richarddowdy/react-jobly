@@ -23,10 +23,6 @@ function Company() {
     return <Redirect to='/login' />;
   };
 
-  if(company){
-
-    console.log(company.jobs)
-  }
   return (company ?
     <div >
       <h1>{company.name}</h1>

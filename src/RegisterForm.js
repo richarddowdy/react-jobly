@@ -38,7 +38,6 @@ function RegisterForm({ register }) {
           <label htmlFor="password">Password</label>
           <input
             onChange={handleChange}
-            // Password gives stars?
             type="password"
             name="password"
             id="password"
@@ -85,11 +84,10 @@ function RegisterForm({ register }) {
             id="email"
           />
         </div>
-
         <button id="submitButton">Submit</button>
       </form>
     </div>
   );
-}
+};
 
 export default RegisterForm;

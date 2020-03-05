@@ -14,8 +14,7 @@ function JobCard({ job, appliedStatus }) {
     if(res.message === "applied"){
       setApplied(true);
     }
-    console.log(res);
-  }
+  };
 
   return (
     <div className="Card card col-md-4">

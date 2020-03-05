@@ -4,7 +4,7 @@ import {UserContext} from './App';
 function Profile({ handleUpdate}) {
 
   const {user} = useContext(UserContext);
-  const {username, first_name, last_name, email} = user.user;
+  const {username, first_name, last_name, email} = user;
   console.log(user)
 
   const [formData, setFormData] = useState({

@@ -10,7 +10,6 @@ function Companies() {
   const [companies, setCompanies] = useState([]);
   const { user } = useContext(UserContext);
 
-  
   useEffect(() => {
     async function fetchCompanies() {
       const companiesResult = await JoblyApi.getCompanies();
@@ -18,24 +17,25 @@ function Companies() {
     };
     fetchCompanies();
   }, []);
-  
+
   async function searchCompanies({ searchTerm }) {
     let data = { search: searchTerm };
     const companiesResult = await JoblyApi.getCompanies(data);
     setCompanies(companiesResult);
   };
-  
+
   if (!user) {
     return <Redirect to='/login' />;
   };
 
-  return (companies.length ?
-    <div classname="col-md-8">
-      <CompanySearchForm searchCompanies={searchCompanies} />
-      {companies.map(company =>
-        <CompanyCard company={company} key={company.handle}/>
-      )}
-    </div>
+  return (
+    companies.length ?
+      <div classname="col-md-8">
+        <CompanySearchForm searchCompanies={searchCompanies} />
+        {companies.map(company =>
+          <CompanyCard company={company} key={company.handle} />
+        )}
+      </div>
     : "");
 };
 

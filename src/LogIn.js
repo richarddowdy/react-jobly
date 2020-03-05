@@ -18,7 +18,7 @@ function Login({ handleLogin }) {
 
     if (resp.token) {
       handleLogin(resp.token);
-      let user = await JoblyApi.getUser(data.username);
+      let {user} = await JoblyApi.getUser(data.username);
       storeUser(user);
       history.push("/");
     };

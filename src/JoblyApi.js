@@ -79,11 +79,8 @@ class JoblyApi {
       username,
       'post'
     )
-    console.log(res);
     return res;
   };
-
-
 }
 
 export default JoblyApi;
