@@ -9,11 +9,14 @@ function Company() {
   const { handle } = useParams();
   const [company, setCompany] = useState(null);
   const { user } = useContext(UserContext);
+  let jobs;
 
   useEffect(() => {
     async function fetchCompany(handle) {
       const companyResult = await JoblyApi.getCompany(handle);
       setCompany(companyResult);
+      jobs = await JoblyApi.getJobs();
+      jobs = jobs.filter(job => job.company_handle === handle);
     };
 
     fetchCompany(handle);
@@ -23,12 +26,14 @@ function Company() {
     return <Redirect to='/login' />;
   };
 
+
+
   return (company ?
     <div >
       <h1>{company.name}</h1>
       <h4>{company.description}</h4>
       <div>
-        {company.jobs.map(job => (
+        {jobs.map(job => (
           <JobCard job={job} key={job.title} appliedStatus={job.state} />
         ))}
       </div>
