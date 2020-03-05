@@ -1,15 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 // Define goToHome function in Login.js later
 
-function RegisterForm({register}) {
+function RegisterForm({ register }) {
   const [formData, setFormData] = useState({
     username: "",
-    password: "",
-    first_name: "",
-    last_name: "",
-    photo_url: "",
-    email: ""
+    password: ""
   });
 
   const handleChange = evt => {
@@ -89,7 +85,7 @@ function RegisterForm({register}) {
             id="email"
           />
         </div>
-        
+
         <button id="submitButton">Submit</button>
       </form>
     </div>
