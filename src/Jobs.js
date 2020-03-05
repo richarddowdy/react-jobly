@@ -22,10 +22,11 @@ function Jobs() {
     return <Redirect to='/login' />;
   };
 
+
   return (jobs.length ?
     <div>
       {jobs.map(job =>
-        <JobCard job={job} key={job.id} />
+        <JobCard job={job} key={job.id} appliedStatus={job.state} />
       )}
     </div>
     : "");

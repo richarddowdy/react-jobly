@@ -1,14 +1,16 @@
-import React, {useState} from 'react';
-import JoblyApi from './JoblyApi';
+import React, {useState, useContext} from 'react';
+import {UserContext} from './App';
 
-function Profile({ user, username, firstName, lastName, email, password, handleUpdate}) {
+function Profile({ handleUpdate}) {
+
+  const {user} = useContext(UserContext);
+  const {username, first_name, last_name, email} = user.user;
+  console.log(user)
 
   const [formData, setFormData] = useState({
-    first_name: firstName,
-    last_name: lastName,
+    first_name: first_name,
+    last_name: last_name,
     email: email,
-    
-    password: password
   });
 
   const handleChange = evt => {
@@ -86,7 +88,6 @@ function Profile({ user, username, firstName, lastName, email, password, handleU
             type="password"
             name="password"
             value={formData.password}
-           
             id="password"
           />
         </div>

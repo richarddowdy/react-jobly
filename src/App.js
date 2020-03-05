@@ -38,7 +38,7 @@ function App() {
         <UserContext.Provider value={{ user, storeUser }}>
 
           <NavBar loggedIn={loggedIn} handleLogOut={handleLogOut} />
-          <Routes loggedIn={loggedIn} handleLogin={handleLogin} handleUpdate={handleUpdate} user = {user.user} />
+          <Routes loggedIn={loggedIn} handleLogin={handleLogin} handleUpdate={handleUpdate} />
         </UserContext.Provider>
       </BrowserRouter>
     </div>

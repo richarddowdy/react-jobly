@@ -26,7 +26,7 @@ function Routes({handleLogin, loggedIn, handleUpdate, user}) {
         <Jobs />
       </Route>
       <Route exact path = "/profile">
-        <Profile password = {user.password} handleUpdate = {handleUpdate} user={user}/>
+        <Profile handleUpdate = {handleUpdate} />
       </Route>
       <Redirect to='/login' /> 
 

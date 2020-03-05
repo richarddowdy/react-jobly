@@ -33,7 +33,7 @@ function Companies() {
     <div classname="col-md-8">
       <CompanySearchForm searchCompanies={searchCompanies} />
       {companies.map(company =>
-        <CompanyCard company={company} key={company.handle} />
+        <CompanyCard company={company} key={company.handle}/>
       )}
     </div>
     : "");

@@ -23,13 +23,17 @@ function Company() {
     return <Redirect to='/login' />;
   };
 
+  if(company){
+
+    console.log(company.jobs)
+  }
   return (company ?
     <div >
       <h1>{company.name}</h1>
       <h4>{company.description}</h4>
       <div>
         {company.jobs.map(job => (
-          <JobCard job={job} key={job.title} />
+          <JobCard job={job} key={job.title} appliedStatus={job.state} />
         ))}
       </div>
     </div>
