@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import JoblyApi from './JoblyApi';
 import { useParams } from 'react-router-dom';
 import JobCard from './JobCard';
+import { UserContext } from './App';
+import { Redirect } from 'react-router-dom';
 
 function Company() {
   const { handle } = useParams();
   const [company, setCompany] = useState(null);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     async function fetchCompany(handle) {
@@ -15,6 +18,10 @@ function Company() {
 
     fetchCompany(handle);
   }, [handle]);
+
+  if (!user) {
+    return <Redirect to='/login' />;
+  };
 
   return (company ?
     <div >
