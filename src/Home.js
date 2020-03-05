@@ -9,11 +9,9 @@ function Home({ loggedIn }) {
       <p>All the jobs in one, convenient place</p>
       {loggedIn ?
         <h3>Welcome Back!</h3> :
-        <button>
-          <NavLink exact to="/login" className="nav-link">
-            Log In!
-            </NavLink>
-        </button>
+        <NavLink exact to="/login" className="btn btn-primary font-weight-bold" >
+          Log In!
+        </NavLink>
       }
     </div>
   )

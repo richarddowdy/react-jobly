@@ -18,7 +18,6 @@ function Company() {
       jobs = await JoblyApi.getJobs();
       jobs = jobs.filter(job => job.company_handle === handle);
     };
-
     fetchCompany(handle);
   }, [handle]);
 

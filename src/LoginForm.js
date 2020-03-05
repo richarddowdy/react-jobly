@@ -23,8 +23,8 @@ function LoginForm({login}) {
 
   return (
     <div>
-      <form onSubmit={gatherInput}>
-        <div>
+      <form onSubmit={gatherInput} >
+        <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
             onChange={handleChange}
@@ -32,9 +32,10 @@ function LoginForm({login}) {
             name="username"
             value={formData.username}
             id="username"
+            className="form-control col-6 mx-auto"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
             onChange={handleChange}
@@ -43,10 +44,11 @@ function LoginForm({login}) {
             name="password"
             id="password"
             value={formData.password}
+            className="form-control col-6 mx-auto"
           />
         </div>
         
-        <button id="submitButton">Submit</button>
+        <button id="submitButton" className="btn btn-primary">Submit</button>
       </form>
     </div>
   );
