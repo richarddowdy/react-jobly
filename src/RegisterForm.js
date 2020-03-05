@@ -32,6 +32,7 @@ function RegisterForm({ register }) {
             name="username"
             value={formData.username}
             id="username"
+            className="form-control col-6 mx-auto"
           />
         </div>
         <div>
@@ -42,6 +43,7 @@ function RegisterForm({ register }) {
             name="password"
             id="password"
             value={formData.password}
+            className="form-control col-6 mx-auto"
           />
         </div>
         <div>
@@ -52,6 +54,7 @@ function RegisterForm({ register }) {
             name="first_name"
             value={formData.firstName}
             id="first_name"
+            className="form-control col-6 mx-auto"
           />
         </div>
         <div>
@@ -62,6 +65,7 @@ function RegisterForm({ register }) {
             name="last_name"
             value={formData.lastName}
             id="last_name"
+            className="form-control col-6 mx-auto"
           />
         </div>
         <div>
@@ -72,6 +76,7 @@ function RegisterForm({ register }) {
             name="photo_url"
             value={formData.photo_url}
             id="photo_url"
+            className="form-control col-6 mx-auto"
           />
         </div>
         <div>
@@ -82,9 +87,10 @@ function RegisterForm({ register }) {
             name="email"
             value={formData.email}
             id="email"
+            className="form-control col-6 mx-auto"
           />
         </div>
-        <button id="submitButton">Submit</button>
+        <button className="btn btn-primary" id="submitButton">Submit</button>
       </form>
     </div>
   );

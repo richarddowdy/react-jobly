@@ -36,8 +36,8 @@ function Login({ handleLogin }) {
 
   return (
     <div>
-      <button onClick={() => setLoginForm(true)}>Login</button>
-      <button onClick={() => setLoginForm(false)}>Register</button>
+      <button onClick={() => setLoginForm(true)} className="btn btn-primary">Login</button>
+      <button onClick={() => setLoginForm(false)} className="btn btn-primary">Register</button>
       {loginForm ? <LoginForm login={login} /> : <RegisterForm register={register} />}
     </div>
   );

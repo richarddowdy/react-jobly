@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-// Define goToHome function in Login.js later
-
 function CompanySearchForm({ searchCompanies }) {
   const [formData, setFormData] = useState({
     searchTerm : ""

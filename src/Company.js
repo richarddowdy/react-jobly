@@ -15,7 +15,6 @@ function Company() {
       const companyResult = await JoblyApi.getCompany(handle);
       setCompany(companyResult);
     };
-
     fetchCompany(handle);
   }, [handle]);
 
