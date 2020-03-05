@@ -55,7 +55,6 @@ class JoblyApi {
   }
 
   static async register(data){
-    console.log("Register:",data)
     let res = await this.request(
       'users',
       data,
@@ -64,6 +63,15 @@ class JoblyApi {
     localStorage.setItem("_token", JSON.stringify(res.token));
     return res;
   }
+
+  static async update(username, data){
+    let res = await this.request(
+      `users/${username}`,
+      data.formData,
+      "patch"
+    )
+    return res;
+  };
 
 
 }

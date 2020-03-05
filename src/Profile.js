@@ -1,13 +1,14 @@
-import React, {useState}from 'react';
+import React, {useState} from 'react';
+import JoblyApi from './JoblyApi';
 
-function Profile({ username, firstName, lastName, email }) {
+function Profile({ user, username, firstName, lastName, email, password, handleUpdate}) {
 
   const [formData, setFormData] = useState({
-    username: username,
-    firstName: firstName,
-    lastName: lastName,
+    first_name: firstName,
+    last_name: lastName,
     email: email,
-    photoUrl: "",
+    
+    password: password
   });
 
   const handleChange = evt => {
@@ -20,40 +21,39 @@ function Profile({ username, firstName, lastName, email }) {
 
   const gatherInput = evt => {
     evt.preventDefault();
-    // updateUser({formData});   FOR LATER
+    handleUpdate({formData});   
   };
 
   return (
     <div>
       <form onSubmit={gatherInput}>
         <div>
-          <label htmlFor="username">Username</label>
+          Username
+          </div>
+          <div>
+            {username}
+          
+          </div>
+        <div>
+          <label htmlFor="first_name">First Name</label>
           <input
             onChange={handleChange}
             type="text"
-            name="username"
-            value={formData.username}
-            id="username"
+            name="first_name"
+            value={formData.first_name}
+            placeholder = {user.first_name}
+            id="first_name"
           />
         </div>
         <div>
-          <label htmlFor="firstName">First Name</label>
+          <label htmlFor="last_name">Last Name</label>
           <input
             onChange={handleChange}
             type="text"
-            name="firstName"
-            value={formData.firstName}
-            id="firstName"
-          />
-        </div>
-        <div>
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            onChange={handleChange}
-            type="text"
-            name="lastName"
-            value={formData.lastName}
-            id="lastName"
+            name="last_name"
+            value={formData.last_name}
+            placeholder = {user.last_name}
+            id="last_name"
           />
         </div>
         <div>
@@ -63,6 +63,7 @@ function Profile({ username, firstName, lastName, email }) {
             type="text"
             name="email"
             value={formData.email}
+            placeholder = {user.email}
             id="email"
           />
         </div>
@@ -73,7 +74,20 @@ function Profile({ username, firstName, lastName, email }) {
             type="text"
             name="photoUrl"
             value={formData.photoUrl}
+            placeholder = {user.photo_url}
             id="photoUrl"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="password">Re-enter password</label>
+          <input
+            onChange={handleChange}
+            type="password"
+            name="password"
+            value={formData.password}
+           
+            id="password"
           />
         </div>
 
@@ -85,10 +99,3 @@ function Profile({ username, firstName, lastName, email }) {
 
 export default Profile;
 
-Profile.defaultProps = {
-  username: "user1",
-  firstName: "first1",
-  lastName: 'last1',
-  email: 'email1',
-  photoUrl: ""
-}
