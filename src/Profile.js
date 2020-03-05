@@ -1,11 +1,11 @@
-import React, {useState, useContext} from 'react';
-import {UserContext} from './App';
+import React, { useState, useContext } from 'react';
+import { UserContext } from './App';
 
-function Profile({ handleUpdate}) {
+function Profile({ handleUpdate }) {
 
-  const {user} = useContext(UserContext);
-  const {username, first_name, last_name, email} = user;
-  console.log(user)
+  const { user } = useContext(UserContext);
+  const { username, first_name, last_name, email } = user;
+  const [message, setMessage] = useState(null);
 
   const [formData, setFormData] = useState({
     first_name: first_name,
@@ -21,9 +21,18 @@ function Profile({ handleUpdate}) {
     }));
   };
 
-  const gatherInput = evt => {
+  const gatherInput = async (evt) => {
     evt.preventDefault();
-    handleUpdate({formData});   
+
+    let res = await handleUpdate({ formData });
+    
+    if (res.user) {
+      setMessage(<div className="alert alert-success">Success!</div>);
+    }
+    else {
+      setMessage(<div className="alert alert-danger">Unsuccessful</div>);
+    }
+
   };
 
   return (
@@ -32,10 +41,10 @@ function Profile({ handleUpdate}) {
         <div>
           Username
           </div>
-          <div>
-            {username}
-          
-          </div>
+        <div>
+          {username}
+
+        </div>
         <div>
           <label htmlFor="first_name">First Name</label>
           <input
@@ -43,7 +52,7 @@ function Profile({ handleUpdate}) {
             type="text"
             name="first_name"
             value={formData.first_name}
-            placeholder = {user.first_name}
+            placeholder={user.first_name}
             id="first_name"
           />
         </div>
@@ -54,7 +63,7 @@ function Profile({ handleUpdate}) {
             type="text"
             name="last_name"
             value={formData.last_name}
-            placeholder = {user.last_name}
+            placeholder={user.last_name}
             id="last_name"
           />
         </div>
@@ -65,7 +74,7 @@ function Profile({ handleUpdate}) {
             type="text"
             name="email"
             value={formData.email}
-            placeholder = {user.email}
+            placeholder={user.email}
             id="email"
           />
         </div>
@@ -76,7 +85,7 @@ function Profile({ handleUpdate}) {
             type="text"
             name="photoUrl"
             value={formData.photoUrl}
-            placeholder = {user.photo_url}
+            placeholder={user.photo_url}
             id="photoUrl"
           />
         </div>
@@ -91,6 +100,8 @@ function Profile({ handleUpdate}) {
             id="password"
           />
         </div>
+
+        {message ? message : null}
 
         <button id="submitButton">Submit</button>
       </form>

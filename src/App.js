@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import './App.css';
 import NavBar from './NavBar';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Redirect } from 'react-router-dom';
 import Routes from './Routes';
 import { useLocalStorage } from './hooks';
 import JoblyApi from './JoblyApi';
+
 
 const UserContext = React.createContext();
 
 function App() {
   const [loggedIn, setLoggedIn] = useLocalStorage("_token");
   const [user, setUser] = useLocalStorage("user");
+
+
   const storeUser = (newUser) => {
     setUser(oldUser => newUser);
   };
@@ -26,8 +29,15 @@ function App() {
   }
 
   const handleUpdate = async (data) => {
+
     let res = await JoblyApi.update(user.username, data);
-    setUser(res.user);
+    if (res) {
+      setUser(res.user);
+
+    }
+
+
+    return res;
   };
 
   return (
