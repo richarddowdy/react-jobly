@@ -7,7 +7,7 @@ import Company from './Company';
 import Jobs from './Jobs';
 import Profile from './Profile';
 
-function Routes({handleLogin, loggedIn, handleUpdate }) {
+function Routes({handleLogin, loggedIn}) {
   return (
     <Switch>
       <Route exact path = "/" >
@@ -26,7 +26,7 @@ function Routes({handleLogin, loggedIn, handleUpdate }) {
         <Jobs />
       </Route>
       <Route exact path = "/profile">
-        <Profile handleUpdate = {handleUpdate} />
+        <Profile />
       </Route>
       <Redirect to='/login' /> 
     </Switch>

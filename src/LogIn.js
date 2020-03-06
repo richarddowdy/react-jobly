@@ -9,7 +9,7 @@ import { UserContext } from './App';
 function Login({ handleLogin }) {
   const [loginForm, setLoginForm] = useState(true);
   const history = useHistory();
-  const { storeUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   // Might put login/register in one function
   async function login(data) {
@@ -19,7 +19,7 @@ function Login({ handleLogin }) {
     if (resp.token) {
       handleLogin(resp.token);
       let {user} = await JoblyApi.getUser(data.username);
-      storeUser(user);
+      setUser(user);
       history.push("/");
     };
   };
@@ -29,7 +29,7 @@ function Login({ handleLogin }) {
     if (resp.token) {
       handleLogin(resp.token);
       let user = await JoblyApi.getUser(data.username);
-      storeUser(user);
+      setUser(user);
       history.push("/");
     };
   };

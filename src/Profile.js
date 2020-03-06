@@ -1,16 +1,28 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from './App';
+import JoblyApi from './JoblyApi';
 
-function Profile({ handleUpdate }) {
+function Profile() {
 
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const { username, first_name, last_name, email } = user;
   const [message, setMessage] = useState(null);
 
+
+  const handleUpdate = async (data) => {
+    let res = await JoblyApi.update(user.username, data);
+    if (res) {
+      setUser(res.user);
+    }
+    return res;
+  };
+
   const [formData, setFormData] = useState({
-    first_name: first_name,
-    last_name: last_name,
-    email: email,
+    first_name: "",
+    last_name: "",
+    email: "",
+    photo_url: "",
+    password: ""
   });
 
   const handleChange = evt => {
@@ -25,14 +37,13 @@ function Profile({ handleUpdate }) {
     evt.preventDefault();
 
     let res = await handleUpdate({ formData });
-    
+
     if (res.user) {
       setMessage(<div className="alert alert-success">Success!</div>);
     }
     else {
       setMessage(<div className="alert alert-danger">Unsuccessful</div>);
     }
-
   };
 
   return (
@@ -79,14 +90,14 @@ function Profile({ handleUpdate }) {
           />
         </div>
         <div>
-          <label htmlFor="photoUrl">Photo URL</label>
+          <label htmlFor="photo_url">Photo URL</label>
           <input
             onChange={handleChange}
             type="text"
-            name="photoUrl"
-            value={formData.photoUrl}
+            name="photo_url"
+            value={formData.photo_url}
             placeholder={user.photo_url}
-            id="photoUrl"
+            id="photo_url"
           />
         </div>
 

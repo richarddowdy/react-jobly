@@ -38,51 +38,53 @@ class JoblyApi {
     let res = await this.request('jobs');
     return res.jobs;
   }
-  
+
   static async getUser(username) {
     let res = await this.request(`users/${username}`)
     return res;
   }
 
-  static async login(data){
+  static async login(data) {
     let res = await this.request(
       'login',
-      data ,
+      data,
       "post"
-      );
+    );
     localStorage.setItem("_token", JSON.stringify(res.token));
     return res;
   }
 
-  static async register(data){
+  static async register(data) {
     let res = await this.request(
       'users',
       data,
       "post"
-      );
+    );
     localStorage.setItem("_token", JSON.stringify(res.token));
     return res;
   }
 
-  static async update(username, data){
+  static async update(username, data) {
+    let dataCopy = { ...data.formData }
+    if (dataCopy.photo_url === "") {
+      delete dataCopy.photo_url
+    };
     try {
-    let res = await this.request(
-      `users/${username}`,
-      data.formData,
-      "patch"
-    )
-    
-    return res;
+      let res = await this.request(
+        `users/${username}`,
+        dataCopy,
+        "patch"
+      )
+      return res;
     } catch {
       return false;
     };
   };
 
-  static async apply (id, username){
-    console.log("username", username)
+  static async apply(id, username) {
     let res = await this.request(
       `jobs/${id}/apply`,
-      {username},
+      { username },
       'post'
     )
     return res;
