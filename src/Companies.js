@@ -30,7 +30,7 @@ function Companies() {
 
   return (
     companies.length ?
-      <div classname="col-md-8">
+      <div>
         <CompanySearchForm searchCompanies={searchCompanies} />
         {companies.map(company =>
           <CompanyCard company={company} key={company.handle} />

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function CompanySearchForm({ searchCompanies }) {
   const [formData, setFormData] = useState({
-    searchTerm : ""
+    searchTerm: ""
   });
 
   const handleChange = evt => {
@@ -19,19 +19,19 @@ function CompanySearchForm({ searchCompanies }) {
   };
 
   return (
-    <div>
-      <form onSubmit={gatherInput}>
+    <div className="m-6 col-3 mx-auto">
+      <form className="form-inline" onSubmit={gatherInput}>
         <div>
-          <input
+          <input class="form-control flex-grow"
             onChange={handleChange}
             type="text"
             name="searchTerm"
             value={formData.searchTerm}
-            placeholder = "Enter search term"
+            placeholder="Enter search term"
             id="searchTerm"
           />
         </div>
-        <button id="submitButton">Submit</button>
+        <button className="btn btn-primary" id="submitButton">Submit</button>
       </form>
     </div>
   );

@@ -114,7 +114,7 @@ function Profile() {
 
         {message ? message : null}
 
-        <button id="submitButton">Submit</button>
+        <button className= "btn btn-primary" id="submitButton">Submit</button>
       </form>
     </div>
   )
