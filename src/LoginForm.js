@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 
-// Define goToHome function in Login.js later
-
 function LoginForm({login}) {
   const [formData, setFormData] = useState({
     username: "",
@@ -39,7 +37,6 @@ function LoginForm({login}) {
           <label htmlFor="password">Password</label>
           <input
             onChange={handleChange}
-            // Password gives stars?
             type="password"
             name="password"
             id="password"
@@ -52,6 +49,6 @@ function LoginForm({login}) {
       </form>
     </div>
   );
-}
+};
 
 export default LoginForm;

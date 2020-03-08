@@ -6,7 +6,6 @@ import { UserContext } from './App';
 import { Redirect } from 'react-router-dom';
 
 function Companies() {
-  // Get a list of all the companies and then map
   const [companies, setCompanies] = useState([]);
   const { user } = useContext(UserContext);
 

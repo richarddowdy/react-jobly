@@ -10,7 +10,6 @@ function JobCard({ job, appliedStatus }) {
   const { user } = useContext(UserContext);
 
   const handleApply = async (id) => {
-    console.log("user username", user.username)
     let res = await JoblyApi.apply(id, user.username)
     if(res.message === "applied"){
       setApplied(true);

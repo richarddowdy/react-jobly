@@ -5,7 +5,6 @@ import { UserContext } from './App';
 import { Redirect } from 'react-router-dom';
 
 function Jobs() {
-  // Get a list of all the companies and then map
   const [jobs, setJobs] = useState([]);
   const { user } = useContext(UserContext);
 
@@ -17,11 +16,9 @@ function Jobs() {
     fetchJobs();
   }, []);
 
-
   if (!user) {
     return <Redirect to='/login' />;
   };
-
 
   return (jobs.length ?
     <div>

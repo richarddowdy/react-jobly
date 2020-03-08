@@ -26,8 +26,6 @@ function Company() {
     return <Redirect to='/login' />;
   };
 
-
-
   return (company ?
     <div >
       <h1>{company.name}</h1>
@@ -40,6 +38,6 @@ function Company() {
     </div>
     :
     "");
-}
+};
 
 export default Company;

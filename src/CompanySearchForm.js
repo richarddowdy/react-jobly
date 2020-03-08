@@ -35,6 +35,6 @@ function CompanySearchForm({ searchCompanies }) {
       </form>
     </div>
   );
-}
+};
 
 export default CompanySearchForm;

@@ -11,14 +11,11 @@ function Login({ handleLogin }) {
   const history = useHistory();
   const { setUser } = useContext(UserContext);
 
-  // Might put login/register in one function
   async function login(data) {
-
     const resp = await JoblyApi.login(data);
-
     if (resp.token) {
       handleLogin(resp.token);
-      let {user} = await JoblyApi.getUser(data.username);
+      let { user } = await JoblyApi.getUser(data.username);
       setUser(user);
       history.push("/");
     };
